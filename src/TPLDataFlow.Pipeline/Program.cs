@@ -80,8 +80,7 @@ namespace TPLDataFlow.Pipeline
                    .ToArray();
             });
 
-            // Finds all words in the specified collection whose reverse also 
-            // exists in the collection.
+            // 6. Finds all words whose reverse also exists in the collection.
             var reversedFinder = new TransformManyBlock<string[], string>(words =>
             {
                 Console.WriteLine($"{++counter6} - Finding reversed words ...");
@@ -126,7 +125,7 @@ namespace TPLDataFlow.Pipeline
                 };
 
                 // enqueue async
-                buffer.SendAsync(uri).GetAwaiter().GetResult();
+                /* await */ buffer.SendAsync(uri).GetAwaiter().GetResult();
             }
 
             // Mark the head of the pipeline as complete.
